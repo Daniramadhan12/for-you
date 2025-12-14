@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For You</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+</head>
+
+<body 
+    style="background-image: url(https://i.pinimg.com/736x/62/e6/71/62e6718f922e208788509d90b929a394.jpg);"
+    class="flex justify-center h-screen items-center bg-cover bg-center"
+>
+ 
+    <div 
+        id="kartu"
+        class="bg-white px-8 py-6 border-4 border-blue-300 shadow-lg shadow-orange-300 rounded-xl text-center animate__animated animate__bounceInDown m-8 w-80"
+    >
+        <h1 class="text-2xl">For You</h1>
+        <h1 class="text-4xl text-blue-800 font-bold animate__animated animate__pulse animate__infinite">
+            Dinda
+        </h1>
+
+        <button 
+            class="p-2 bg-blue-600 text-white rounded mt-4 hover:bg-blue-900 transition ease-in w-full animate__animated animate__delay-1s animate__tada"
+            onclick="mulaiUcapan()"
+        >
+            Click Here!
+        </button>
+    </div>
+   
+    <script src="https://cdn.jsdelivr.net/npm/@tsparticles/confetti@3.0.3/tsparticles.confetti.bundle.min.js"></script>
+
+    <script>
+        const kartu = document.getElementById("kartu");
+
+        const messages = [
+            `
+            <h1 class="text-xl font-semibold animate__animated animate__fadeInDown">
+                hai, gimana kabarnya? semoga baik baik aja ya
+            </h1>
+            `,
+            `
+            <h1 class="text-xl font-semibold animate__animated animate__fadeInDown">
+                asik tanggal berapa si ini? ada yang bertambah usia nii wkwk
+            </h1>
+            `,
+            `
+            <h1 class="text-l font-semibold animate__animated animate__fadeInDown">
+                 🎉 Happy Birthday Dinda 21st 🎉
+            </h1>
+             <p class="mt-4 animate__animated animate__fadeInUp">
+                happy birthday ya, semoga di hari bertambahnya usia ini menjadikan kamu pribadi yang lebih baik lagi ya. semoga semua hal yang kamu inginkan segera tercapai dan di permudah segala urusannya sama allah...  aminn😇
+            </p>
+            `,
+            `
+            <p class="mt-4 animate__animated animate__fadeInUp">
+                kalau boleh saya ngomong sesuatu, jujur saya gak tau kenapa alasan kamu tiba-tiba melakukan itu tanpa memberitahu saya terlebih dahulu. saat itu hanya ada pertanyaan itu dipikiran saya. Dan muncul beberapa pertanyaan "apakah ini jawaban dari kamu?","apakah saya sudah sama sekali tidak ada di dalamnya?"
+            </p>
+            <p class="mt-4 animate__animated animate__fadeInUp">
+                Tapi gapapa saya ngerti keadaan kamu dan memang ini mungkin jawaban serta keputusan kamu. jangan menyalahkan diri kamu sendiri ya!
+            </p>
+            `,
+            `
+            <p class="mt-4 animate__animated animate__fadeInUp">
+                saya banyak minta maaf kalo selama ini saya punya banyak salah dan bikin kecewa kamu. kalau memang waktu bisa diputar, pengen banget buat memutarnya. but i can't, only moments remain to be remembered.
+            </p>
+            <p class="mt-4 font-bold animate__animated animate__fadeIn animate__delay-1s">
+                If one day you need something and change your mind, I’ll still be in the same place
+            </p>
+            `,
+            `
+            <p class="mt-4 animate__animated animate__fadeInUp">
+                Maaf kalau saya hanya bisa kasih ini untuk kamu, semoga kamu suka dan bermanfaat untuk kebutuhan kamu ya
+            </p>
+            <p class="mt-4 animate__animated animate__fadeInUp">
+                oh iyaa, nitip salam juga yaa sama mamah bapa sekeluarga hehe, semoga sehat terus semuanya aminnn😇
+            </p>
+            `,
+            `
+            <p class="mt-4 animate__animated animate__fadeInUp">
+                sekali lagi Happy birthday Dinda, seneng bisa pernah menjadi bagian dari hidup kamu. sukses terus yaa jangan nyerah sama semuanya! You are the best! you are my favorite person!
+            </p>
+            <p class="mt-4 font-bold animate__animated animate__fadeIn animate__delay-1s">
+                — From : DN —
+            </p>
+            `
+        ];
+
+        let index = 0;
+
+        function mulaiUcapan() {
+            tampilkanPesan();
+        }
+
+        function tampilkanPesan() {
+
+            // CONFETTI HANYA SAAT HAPPY BIRTHDAY (index ke-2)
+            if (index === 2) {
+                confetti({
+                    particleCount: 150,
+                    spread: 80,
+                    origin: { y: 0.6 }
+                });
+            }
+
+            kartu.innerHTML = `
+                ${messages[index]}
+                <button 
+                    class="p-2 bg-blue-600 text-white rounded mt-6 hover:bg-blue-900 transition w-full animate__animated animate__fadeInUp"
+                    onclick="nextPesan()"
+                >
+                    ${index === messages.length - 1 ? "Tutup" : "Next"}
+                </button>
+            `;
+        }
+
+        function nextPesan() {
+            if (index < messages.length - 1) {
+                index++;
+                tampilkanPesan();
+            } else {
+                location.reload();
+            }
+        }
+    </script>
+
+</body>
+</html>
